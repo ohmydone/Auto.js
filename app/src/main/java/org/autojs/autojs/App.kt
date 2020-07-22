@@ -37,7 +37,14 @@ import java.util.*
  * Created by Stardust on 2017/1/27.
  */
 
+/*
+* MultiDexApplication分包用 先不用关注
+* */
 class App : MultiDexApplication() {
+
+    /*
+    * lateinit编译期在检查时不要因为属性变量未被初始化而报错
+    * */
     lateinit var dynamicBroadcastReceivers: DynamicBroadcastReceivers
         private set
 

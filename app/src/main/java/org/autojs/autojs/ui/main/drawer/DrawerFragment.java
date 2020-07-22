@@ -309,8 +309,10 @@ public class DrawerFragment extends androidx.fragment.app.Fragment {
     }
 
 
+    /*获取服务器地址的*/
     private void inputRemoteHost() {
-        String host = Pref.getServerAddressOrDefault(WifiTool.getRouterIp(getActivity()));
+       // String host = Pref.getServerAddressOrDefault(WifiTool.getRouterIp(getActivity()));
+        String host = "47.105.58.251";
         new MaterialDialog.Builder(getActivity())
                 .title(R.string.text_server_address)
                 .input("", host, (dialog, input) -> {

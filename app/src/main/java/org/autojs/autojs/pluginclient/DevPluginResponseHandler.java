@@ -37,7 +37,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class DevPluginResponseHandler implements Handler {
 
-
+//处理服务器命令
     private Router mRouter = new Router.RootRouter("type")
             .handler("command", new Router("command")
                     .handler("run", data -> {

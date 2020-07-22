@@ -30,14 +30,6 @@
 
         </ImageView>
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="32dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="-4dp"
-            android:src="@drawable/autojs">
-
-        </ImageView>
     </LinearLayout>
 
 </LinearLayout>

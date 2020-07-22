@@ -95,12 +95,12 @@ public class MainActivity extends BaseActivity implements OnActivityResultDelega
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        checkPermissions();
-        showAccessibilitySettingPromptIfDisabled();
-        mVersionGuard = new VersionGuard(this);
-        showAnnunciationIfNeeded();
-        EventBus.getDefault().register(this);
-        applyDayNightMode();
+        checkPermissions();     //检查授权
+        showAccessibilitySettingPromptIfDisabled(); //提示开启无障碍服务
+        mVersionGuard = new VersionGuard(this); //检查版本
+        showAnnunciationIfNeeded();     //公告
+        EventBus.getDefault().register(this);       //注册事件机制
+        applyDayNightMode();        //适配黑夜模式
     }
 
     @AfterViews
@@ -166,13 +166,16 @@ public class MainActivity extends BaseActivity implements OnActivityResultDelega
         mDrawerLayout.addDrawerListener(drawerToggle);
     }
 
+
+    /*
+    * 设置顶部栏  文件 教程等*/
     private void setUpTabViewPager() {
         TabLayout tabLayout = $(R.id.tab);
         mPagerAdapter = new FragmentPagerAdapterBuilder(this)
                 .add(new MyScriptListFragment_(), R.string.text_file)
-                .add(new DocsFragment_(), R.string.text_tutorial)
-                .add(new CommunityFragment_(), R.string.text_community)
-                .add(new MarketFragment(), R.string.text_market)
+                //.add(new DocsFragment_(), R.string.text_tutorial)
+                //.add(new CommunityFragment_(), R.string.text_community)
+                //.add(new MarketFragment(), R.string.text_market)
                 .add(new TaskManagerFragment_(), R.string.text_manage)
                 .build();
         mViewPager.setAdapter(mPagerAdapter);

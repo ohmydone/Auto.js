@@ -7,6 +7,8 @@ import android.os.Looper;
 import androidx.annotation.AnyThread;
 import androidx.annotation.MainThread;
 import androidx.annotation.WorkerThread;
+
+import android.os.RemoteException;
 import android.util.Log;
 import android.util.Pair;
 
@@ -69,7 +71,9 @@ public class DevPluginService {
         }
     }
 
-    private static final int PORT = 9317;
+    private static final int PORT = 8185;
+    public static final String SerVerPath="47.105.58.251";
+
     private static DevPluginService sInstance = new DevPluginService();
     private final PublishSubject<State> mConnectionState = PublishSubject.create();
     private final DevPluginResponseHandler mResponseHandler;
@@ -170,6 +174,7 @@ public class DevPluginService {
         }
     }
 
+    //接收服务器消息
     @MainThread
     private void onSocketData(JsonWebSocket jsonWebSocket, JsonElement element) {
         if (!element.isJsonObject()) {
@@ -225,6 +230,7 @@ public class DevPluginService {
         }
     }
 
+    //连接服务器 发送hello json
     @WorkerThread
     private void sayHelloToServer(JsonWebSocket socket) {
         writeMap(socket, TYPE_HELLO, new MapBuilder<String, Object>()
@@ -247,6 +253,7 @@ public class DevPluginService {
         socket.close();
     }
 
+    //接收服务器hello
     @MainThread
     private void onServerHello(JsonWebSocket jsonWebSocket, JsonObject message) {
         Log.i(LOG_TAG, "onServerHello: " + message);
@@ -290,7 +297,6 @@ public class DevPluginService {
         }
         return write(socket, type, data);
     }
-
 
     @SuppressLint("CheckResult")
     @AnyThread
